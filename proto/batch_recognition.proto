@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package stalin;
+
+message RecognitionRequest {
+    // speech in wav format
+    bytes snippet = 1;
+};
+
+message RecognitionResponse {
+    string text = 1;
+}
+
+service Recognition {
+    rpc Recognize (RecognitionRequest) returns (RecognitionResponse);
+}
