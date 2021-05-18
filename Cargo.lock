@@ -626,6 +626,7 @@ version = "0.1.0"
 dependencies = [
  "anyhow",
  "deepspeech",
+ "prost",
  "tokio",
  "tonic",
  "tonic-build",
