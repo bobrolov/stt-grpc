@@ -12,7 +12,7 @@ async fn main() -> Result<(), anyhow::Error> {
 
     let mut snippet = Vec::new();
     let mut client = RecognitionClient::connect(format!("http://{}", address)).await?;
-    let mut path = std::env::var("WAV_FILE_PATH").unwrap();
+    let path = std::env::var("WAV_FILE_PATH").unwrap();
     let mut file = tokio::fs::File::open(path.as_str()).await?;
     file.read_to_end(&mut snippet).await?;
 

@@ -15,7 +15,6 @@ struct GrpcServer {
     // deepspeech: Arc<Mutex<Model>>,
 }
 
-
 #[tonic::async_trait]
 impl Recognition for GrpcServer {
     async fn recognize(
@@ -23,10 +22,8 @@ impl Recognition for GrpcServer {
         request: Request<RecognitionRequest>,
     ) -> Result<Response<RecognitionResponse>, Status> {
         let snippet = request.into_inner().snippet;
-        //let mut model = new_model().unwrap();
-        // let text = model.transcript(snippet).unwrap();
-        let text = "123".to_string();
-        // let response = stt_model::RecognitionResponse { text };
+        let mut model = new_model().unwrap();
+        let text = model.transcript(snippet).unwrap();
         let response = stt_model::RecognitionResponse { text };
         Ok(Response::new(response))
     }
@@ -34,7 +31,6 @@ impl Recognition for GrpcServer {
 
 #[tokio::main]
 async fn main() -> Result<(), anyhow::Error> {
-    simple_logger::SimpleLogger::new().init().unwrap();
     let server_address = std::env::var("SERVER_ADDRESS")?.parse()?;
     // let mut model = new_model().unwrap();
     let grpc_server = GrpcServer {

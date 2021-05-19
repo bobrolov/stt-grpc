@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+  server:
+    image: "deepspeech-grpc"
+    container_name: deepspeech-grpc-server
+#    build: .
+    command: "server"
+    environment:
+      SERVER_ADDRESS: "0.0.0.0:50055"
+    ports:
+    - 50055:50055
+
+  client:
+    image: "deepspeech-grpc"
+    container_name: deepspeech-grpc-client
+#    build: .
+    command: "client"
+    environment:
+      SERVER_ADDRESS: "0.0.0.0:50055"
+    depends_on:
+      - server

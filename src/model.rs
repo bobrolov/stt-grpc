@@ -94,7 +94,7 @@ impl Transcript for Model {
         write(snippet, &path)?;
         let file = File::open(&path)?;
         let snippet = read(file)?;
-        std::fs::remove_file(&path);
+        std::fs::remove_file(&path)?;
         let result = self.speech_to_text(&snippet)?;
         Ok(result)
     }
@@ -140,8 +140,8 @@ mod test {
     use deepspeech::Model;
 
     fn test1() {
-        std::env::set_var("LD_LIBRARY_PATH", "../deepspeech/native-client");
-        std::env::set_var("LIBRARY_PATH", "../deepspeech/native-client");
+        std::env::set_var("LD_LIBRARY_PATH", "../deepspeech/native-client-macos");
+        std::env::set_var("LIBRARY_PATH", "../deepspeech/native-client-macos");
         let mut m = new_model().unwrap();
         let snippet = vec![0, 1, 2, 3, 4, 5, 6];
         let result = m.transcript(snippet).unwrap();
