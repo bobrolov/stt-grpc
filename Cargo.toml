@@ -11,10 +11,13 @@ anyhow = "1.0.40"
 tokio = {version = "1.6.0", features = ["full"]}
 tonic = "0.4.3"
 deepspeech = "0.9.0"
+deepspeech-sys = "0.9.0"
 prost="0.7.0"
 audrey = "0.3.0"
 dasp_interpolate = { version = "0.11", features = ["linear"] }
 dasp_signal = "0.11"
+num = "0.4.0"
+simple_logger="1.11.0"
 
 [build-dependencies]
 tonic-build = "0.4.2"
