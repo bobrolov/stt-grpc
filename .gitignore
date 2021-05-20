@@ -1,2 +1,7 @@
 /target
 /.idea
+/proto/stalin.rs
+/deepspeech/model
+/deepspeech/native-client-linux
+/deepspeech/native-client-macos
+/data/test.wav
